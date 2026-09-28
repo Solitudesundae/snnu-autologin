@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SnnuAutoLogin</RootNamespace>
+    <AssemblyName>SnnuAutoLogin</AssemblyName>
+    <AssemblyTitle>陕师大校园网自动认证</AssemblyTitle>
+    <Product>SnnuAutoLogin</Product>
+    <Description>陕西师范大学校园网门户自动认证托盘客户端</Description>
+    <Version>1.1.0</Version>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- 单文件发布参数（SelfContained/PublishSingleFile/-r win-x64）由发布命令行传入，
+         见 docs/05 与 README；不写死在工程里，避免拖累测试工程的引用构建 -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- DPAPI（Windows 数据保护 API）封装，CurrentUser 作用域，免管理员 -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+    <!-- 门户响应为 GB2312 编码，.NET 8 需注册 CodePages 编码提供程序 -->
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
